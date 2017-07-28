@@ -1,0 +1,5 @@
+.classpath
+.project
+.settings/**
+src/main/resources/application-prod.properties
+target/**

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta charset="UTF-8" />
+<title>Restricted page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="container">
+        <h3>Restricted page</h3>
+        <p>This page is accessible only to authenticated users.</p>
+        <p>
+            You are logged in as <strong th:text="${user}"></strong>.
+        </p>
+        <p>
+            Visit <a href="/">unrestricted</a> page.
+        </p>
+    </div>
+</body>
+</html>

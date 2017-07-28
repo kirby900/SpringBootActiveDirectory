@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta charset="UTF-8" />
+<title>Unrestricted page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="container">
+        <h3>Unrestricted page</h3>
+        
+        <p>This page is visible to <em>all</em> users, logged in or not.</p>
+        <p th:if="${loggedIn}">
+            You are logged in as <strong th:text="${user}"></strong>. <a href="/logout">Log out</a>.
+        </p>
+        <p th:if="!${loggedIn}">
+            You are not logged in. <a href="/login">Log in</a>.
+        </p>
+        <p>
+            Visit <a href="/restricted">restricted</a> page.
+        </p>
+    </div>
+</body>
+</html>

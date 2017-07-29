@@ -1,23 +1,13 @@
 package pkg;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
 
     @GetMapping("/")
-    String index(Authentication auth, Model model) {
-        if (auth != null && auth.isAuthenticated()) {
-            model.addAttribute("loggedIn", true);
-            // model.addAttribute("user", auth.getName());
-            CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-            model.addAttribute("user", user.getFullName());
-        } else
-            model.addAttribute("loggedIn", false);
-
+    String index() {
         return "unrestricted";
     }
 
@@ -27,10 +17,7 @@ public class MainController {
     }
 
     @GetMapping("/restricted")
-    String restricted(Authentication auth, Model model) {
-        // model.addAttribute("user", auth.getName());
-        CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-        model.addAttribute("user", user.getFullName());
+    String restricted() {
         return "restricted";
     }
 }

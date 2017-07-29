@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head lang="en">
 <meta charset="UTF-8" />
 <title>Unrestricted page</title>
@@ -9,12 +10,14 @@
 <body>
     <div class="container">
         <h3>Unrestricted page</h3>
-        
-        <p>This page is visible to <em>all</em> users, logged in or not.</p>
-        <p th:if="${loggedIn}">
-            You are logged in as <strong th:text="${user}"></strong>. <a href="/logout">Log out</a>.
+
+        <p>
+            This page is visible to <em>all</em> users, logged in or not.
         </p>
-        <p th:if="!${loggedIn}">
+        <p sec:authorize="authenticated">
+            You are logged in as <strong sec:authentication="principal.fullName"></strong>. <a href="/logout">Log out</a>.
+        </p>
+        <p sec:authorize="!authenticated">
             You are not logged in. <a href="/login">Log in</a>.
         </p>
         <p>
